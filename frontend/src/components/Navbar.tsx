@@ -14,9 +14,9 @@ export const Navbar = () => {
         <p>ХҮРГЭЛТИЙН БҮС</p>
       </div>
       <div className="flex gap-[40px]">
-        <div className="flex border-2 border-grey">
+        <div className="flex border-2 rounded-2xl border-black">
           <SearchIcon />
-          <input className="rounded-xl" type="text" placeholder="Хайх" />
+          <input type="text" className="rounded-2xl" placeholder="Хайх" />
         </div>
         <div className="flex gap-[40px]">
           <div className="flex gap-3 items-center">
