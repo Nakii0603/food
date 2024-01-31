@@ -3,6 +3,7 @@ import { PineSvg } from "./Svg";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import FormDialog from "./LoginModal";
 
 export const Navbar = () => {
   return (
@@ -25,7 +26,7 @@ export const Navbar = () => {
           </div>
           <div className="flex gap-3 items-center">
             <AccountCircleIcon />
-            <p>Нэвтрэх</p>
+            <FormDialog/>
           </div>
         </div>
       </div>
