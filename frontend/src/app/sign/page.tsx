@@ -6,15 +6,15 @@ import { useState } from "react";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
   const HandletoSignUp = async () => {
     try {
-      await axios.post("http://localhost:8000/signUp", {
+      await axios.post("http://localhost:8000/user", {
         username: name,
         email: email,
-        address: address,
+        phone: phone,
         password: password,
       });
     } catch (err) {
@@ -49,8 +49,8 @@ export default function SignUp() {
           <div>
             <p className="mb-1">Утас</p>
             <input
-              onChange={(e) => setAddress(e.target.value)}
-              value={address}
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
               className="px-[16px] py-[8px] w-[350px] box-border border-[1px] rounded-[4px] text-[#8B8E95] border-[#8B8E95] bg-[#ECEDF0]"
               type="text"
               placeholder="Та утасны дугаар оруулна уу"

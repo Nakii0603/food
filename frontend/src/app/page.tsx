@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/Navbar";
+import SignUp from "./sign/page";
 
 export default function Home() {
   return (
     <div>
-      <h1>
-        <Navbar />
-      </h1>
+      <Navbar />
+      <SignUp />
     </div>
   );
 }
