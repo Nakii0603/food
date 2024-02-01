@@ -11,7 +11,7 @@ export default function SignUp() {
 
   const HandletoSignUp = async () => {
     try {
-      await axios.post("http://localhost:8000/user", {
+      await axios.post("http://localhost:8000/user/", {
         username: name,
         email: email,
         phone: phone,

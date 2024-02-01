@@ -1,11 +1,12 @@
+import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import Login from "./login/page";
-import FormDialog from "@/components/LoginModal";
+import SignUp from "./sign/page";
 
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      <Navbar/>
+      <SignUp/>
     </div>
   );
 }

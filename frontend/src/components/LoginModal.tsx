@@ -1,21 +1,28 @@
 "use client";
 import * as React from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Box } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export default function FormDialog() {
+  const router = useRouter();
+  const apiUrl = "http://localhost:8000/user/";
   const [open, setOpen] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [error, setError] = React.useState<string | null>(null);
+
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  
   const handleClose = () => {
+    router.push("/main")
     setOpen(false);
   };
 
@@ -23,7 +30,6 @@ export default function FormDialog() {
     <React.Fragment>
       <button onClick={handleClickOpen}>Нэвтрэх</button>
       <Dialog
-
         open={open}
         onClose={handleClose}
         PaperProps={{
@@ -55,6 +61,8 @@ export default function FormDialog() {
             <Box sx={{ alignSelf: "center" }}>
               <DialogContentText>Имэйл</DialogContentText>
               <input
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 className="border-2 border-grey w-[390px] box-border px-2 py-2 "
                 placeholder="Имэйл хаягаа оруулна уу"
                 type="text"
@@ -63,6 +71,8 @@ export default function FormDialog() {
             <Box sx={{ alignSelf: "center" }}>
               <DialogContentText>Нууц үг</DialogContentText>
               <input
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 className="border-2 border-grey w-[390px] box-border px-2 py-2 "
                 placeholder="Нууц үгээ оруулна уу"
                 type="password"
