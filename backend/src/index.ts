@@ -1,5 +1,5 @@
-import express from "express";
 import cors from "cors";
+import express from "express";
 import mongoose from "mongoose";
 import { UserRouter } from "./router/sign";
 
@@ -10,6 +10,7 @@ const MONGODB_URI =
 app.use(cors());
 app.use(express.json());
 app.use("/user", UserRouter);
+app.use("/users",UserRouter)
 app.listen(port, async () => {
   try {
     await mongoose.connect(MONGODB_URI);

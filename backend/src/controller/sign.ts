@@ -39,3 +39,12 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+export const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const users = await UserModel.find();
+    res.status(200).json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

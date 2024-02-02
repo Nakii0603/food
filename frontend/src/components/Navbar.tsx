@@ -3,7 +3,8 @@ import { PineSvg } from "./Svg";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import FormDialog from "./LoginModal";
+import FormDialog from "../app/login/page";
+import { Input } from "@mui/material";
 
 export const Navbar = () => {
   return (
@@ -15,9 +16,9 @@ export const Navbar = () => {
         <p>ХҮРГЭЛТИЙН БҮС</p>
       </div>
       <div className="flex gap-[40px]">
-        <div className="flex border-2 rounded-2xl border-black">
+        <div className="flex items-center">
           <SearchIcon />
-          <input type="text" className="rounded-2xl" placeholder="Хайх" />
+          <Input type="text" className="rounded-2xl" placeholder="Хайх" />
         </div>
         <div className="flex gap-[40px]">
           <div className="flex gap-3 items-center">
