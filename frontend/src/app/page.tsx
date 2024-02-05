@@ -1,13 +1,12 @@
 import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import SignUp from "./sign/page";
-import { Login } from "@mui/icons-material";
-import FormDialog from "./login/page";
+import { Home } from "./home/page";
 
-export default function Home() {
+export default function main() {
   return (
     <div>
       <Navbar />
+      <Home/>
     </div>
   );
 }

@@ -21,13 +21,13 @@ export const Navbar = () => {
           <Input type="text" className="rounded-2xl" placeholder="Хайх" />
         </div>
         <div className="flex gap-[40px]">
-          <div className="flex gap-3 items-center">
+          <div className="flex  gap-3 items-center">
             <ShoppingBasketIcon />
             <p>Сагс</p>
           </div>
           <div className="flex gap-3 items-center">
             <AccountCircleIcon />
-            <FormDialog/>
+            <FormDialog />
           </div>
         </div>
       </div>
