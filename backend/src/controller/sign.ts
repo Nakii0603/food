@@ -1,6 +1,16 @@
-import bcrypt from "bcrypt";
-import { UserModel } from "../Model/sign";
 import { Request, Response } from "express";
+import { UserModel } from "../Model/sign";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+export const userRegistration = async (req: Request, res: Response) => {
+  try {
+    await UserModel.create(req.body);
+    return res.status(201).send({ success: true });
+  } catch (error) {
+    return res.status(400).send({ error });
+  }
+};
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -21,24 +31,24 @@ export const createUser = async (req: Request, res: Response) => {
 };
 
 export const login = async (req: Request, res: Response) => {
-  console.log(res);
   try {
     const { email, password } = req.body;
-    const user: any = await UserModel.findOne({ email });
+    const user = await UserModel.findOne({ email }).select("+password");
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).send({ msg: "user not found" });
     }
-    console.log(user.password);
-    const hashedPassword = await bcrypt.compare(password, user.password);
-    if (!hashedPassword) {
-      return res.status(401).send("Username or password incorrect");
+    const isValid = bcrypt.compareSync(password, user.password as string);
+    if (!isValid) {
+      return res.status(400).send({ msg: "Email or password incorrect" });
     }
-    res.status(200).json({ ...user });
+    const token = jwt.sign({ user }, "MY_SECRET_KEY");
+    return res.status(200).send({ success: true, token });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    console.log(error);
+    return res.status(400).send({ error });
   }
 };
+
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await UserModel.find();

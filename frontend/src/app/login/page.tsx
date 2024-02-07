@@ -16,13 +16,12 @@ export default function FormDialog() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-const handleLogin = () => {
-  console.log(email,password);
-};
+  const handleLogin = () => {
+    console.log(email, password);
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };

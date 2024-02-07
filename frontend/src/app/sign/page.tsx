@@ -8,17 +8,18 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  console.log(email);
 
   const HandletoSignUp = async () => {
     try {
-      await axios.post("http://localhost:8000/user/", {
-        username: name,
+      await axios.post("http://localhost:8000/sign", {
+        name: name,
         email: email,
         phone: phone,
         password: password,
       });
     } catch (err) {
-      console.log(err, "axios");
+      console.log(err, "axios error");
     }
   };
   return (
