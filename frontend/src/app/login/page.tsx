@@ -11,13 +11,13 @@ import axios from "axios";
 
 export default function FormDialog() {
   const router = useRouter();
-  const url = "http://localhost:8000/user";
+  const url = "http://localhost:8000/user/login";
   const [open, setOpen] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleLogin = () => {
-    console.log(email, password, "sdfs");
+
   };
   const handleClickOpen = () => {
     setOpen(true);
