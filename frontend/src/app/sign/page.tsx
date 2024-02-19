@@ -5,19 +5,20 @@ import { useState } from "react";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  console.log(email);
 
   const HandletoSignUp = async () => {
     try {
-      await axios.post("http://localhost:8000/sign", {
-        name: name,
+      const api = "http://localhost:8000/sign";
+      const res = await axios.post(api, {
+        username: username,
         email: email,
         phone: phone,
         password: password,
       });
+      console.log(res);
     } catch (err) {
       console.log(err, "axios error");
     }
@@ -30,8 +31,8 @@ export default function SignUp() {
           <div>
             <p className="mb-1">Нэр</p>
             <input
-              onChange={(e) => setName(e.target.value)}
-              value={name}
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
               className="px-[16px] py-[8px] w-[350px] box-border border-[1px] rounded-[4px] text-[#8B8E95] border-[#8B8E95] bg-[#ECEDF0]"
               type="text"
               placeholder="Нэрээ оруулна уу"
