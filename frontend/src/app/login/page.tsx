@@ -10,15 +10,31 @@ import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
 
 export default function FormDialog() {
-  const router = useRouter();
-  const url = "http://localhost:8000/user/login";
   const [open, setOpen] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
-  const handleLogin = () => {
-
+  const [error, setError] = React.useState<string | null>(null);
+  const router = useRouter();
+  
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8000/login", {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        const token = response.data;
+        localStorage.setItem("token", token);
+        router.push("main");
+      } else {
+        console.log("for example, if there's an error");
+      }
+    } catch (error) {
+      setError("Email or password incorrect");
+    }
   };
+
   const handleClickOpen = () => {
     setOpen(true);
   };
