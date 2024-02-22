@@ -23,7 +23,7 @@ export default function FormDialog() {
         email,
         password,
       });
-      if (response.status === 200) {
+      if (response.status === 200) { 
         const token = response.data;
         localStorage.setItem("token", token);
         router.push("main");
