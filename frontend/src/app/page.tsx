@@ -1,12 +1,16 @@
 import Footer from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import { Home } from "./home/page";
+import { Foodlist } from "./foodlist/page";
+import Card from "@/components/Cards";
+import { Stack } from "@mui/material";
+import MainHead from "@/components/MainHead";
 
 export default function main() {
   return (
-    <div>
+    <Stack>
       <Navbar />
-      <Home/>
-    </div>
+      <Card />
+      <Foodlist />
+    </Stack>
   );
 }

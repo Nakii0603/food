@@ -15,7 +15,6 @@ export default function FormDialog() {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
   const router = useRouter();
-  
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -26,9 +25,8 @@ export default function FormDialog() {
       if (response.status === 200) { 
         const token = response.data;
         localStorage.setItem("token", token);
-        router.push("main");
+        router.push("member");
         console.log(token);
-        
       } else {
         console.log("for example, if there's an error");
       }
