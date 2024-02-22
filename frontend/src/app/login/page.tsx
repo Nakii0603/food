@@ -27,6 +27,8 @@ export default function FormDialog() {
         const token = response.data;
         localStorage.setItem("token", token);
         router.push("main");
+        console.log(token);
+        
       } else {
         console.log("for example, if there's an error");
       }
