@@ -22,6 +22,7 @@ export const UserSchema = new Schema({
       maxlength: 8,
     },
   },
+  
   role: {
     type: String,
     enum: ["user", "admin"],
