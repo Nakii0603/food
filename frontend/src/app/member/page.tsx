@@ -1,11 +1,15 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React from "react";
-export default function home(params: any) {
-  const router = useRouter();
-  const handle = () => {
-    router.push("sign");
-  };
+import { Stack } from "@mui/material";
 
-  return <div onClick={handle}>agfsgd</div>;
+import Card from "@/components/Cards";
+import { Foodlist } from "../foodlist/page";
+import { Navbar } from "@/components/MemberNavbar";
+
+export default function main() {
+  return (
+    <Stack>
+      <Navbar />
+      <Card />
+      <Foodlist />
+    </Stack>
+  );
 }

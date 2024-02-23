@@ -15,18 +15,16 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { Box, Stack, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-
 import { useRouter } from "next/navigation";
 import Modal from "@mui/material/Modal";
 import { Navbar } from "@/components/Navbar";
-
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   const HandletoSignUp = async () => {
     try {
@@ -34,10 +32,9 @@ export default function SignUp() {
       const res = await axios.post(api, {
         username: username,
         email: email,
-        phone: phone,
         password: password,
       });
-      console.log(res);
+      router.push("/")
     } catch (err) {
       console.log(err, "axios error");
     }
