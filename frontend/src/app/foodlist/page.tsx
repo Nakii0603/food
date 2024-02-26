@@ -4,6 +4,10 @@ import { Box, Input } from "@mui/material";
 import { useRouter } from "next/navigation";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
 
 let data = [
   {
@@ -27,32 +31,54 @@ let data = [
     price: "38400$",
   },
 ];
+
 export const Foodlist = () => {
-  return (
-    <Stack sx={{ display: "flex", justifyContent: "center" }}>
-      <Box sx={{ display: "flex", gap: "24px", justifyContent: "center" }}>
-        {data.map((e) => (
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-            }}
-          >
-            <Box sx={{ overflow: "hidden" }}>
-              <img
-                src={e.img}
-                alt=""
-                className="w-[282px] h-[200px] scale-[1.3] "
-              />
-            </Box>
-            <DialogTitle sx={{ padding: "0px" }} key={e.title}>
-              {e.title}
-            </DialogTitle>
-            <DialogContentText>{e.price}</DialogContentText>
+  function AlertDialog() {
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+    const handleClose = () => {
+      setOpen(false);
+    };
+    return (
+      <Stack>
+        <React.Fragment>
+          <Button variant="outlined" onClick={handleClickOpen}>
+            Open alert dialog
+          </Button>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button>
+        </React.Fragment>
+
+        <Stack sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ display: "flex", gap: "24px", justifyContent: "center" }}>
+            {data.map((e) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <Box sx={{ overflow: "hidden" }}>
+                  <img
+                    src={e.img}
+                    alt=""
+                    className="w-[282px] h-[200px] scale-[1.3] "
+                  />
+                </Box>
+                <DialogTitle sx={{ padding: "0px" }} key={e.title}>
+                  {e.title}
+                </DialogTitle>
+                <DialogContentText>{e.price}</DialogContentText>
+              </Box>
+            ))}
           </Box>
-        ))}
-      </Box>
-    </Stack>
-  );
+        </Stack>
+      </Stack>
+    );
+  }
 };

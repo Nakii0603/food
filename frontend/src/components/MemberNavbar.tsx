@@ -1,37 +1,45 @@
-import React from "react";
+"use client";
+import { Box, Dialog, Input, Stack } from "@mui/material";
 import { PineSvg } from "./Svg";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket"
-import { Input } from "@mui/material";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonIcon from "@mui/icons-material/Person";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export const Navbar = () => {
+const Navbar = () => {
+  const router = useRouter();
+  const handle = () => {
+    router.push("Profile");
+  };
+
   return (
-    <div className="m-auto">
-      <div className="flex justify-between w-[1440px]">
-        <div className="flex gap-[30px] items-center">
+    <Stack className="m-auto">
+      <Box className="flex justify-between w-[1440px]">
+        <Box className="flex gap-[30px] items-center">
           <PineSvg />
           <p>НҮҮР</p>
           <p className="text-[#18BA51]">ХООЛНЫ ЦЭС</p>
           <p>ХҮРГЭЛТИЙН БҮС</p>
-        </div>
-        <div className="flex gap-[40px]">
-          <div className="flex items-center">
+        </Box>
+        <Box className="flex gap-[40px]">
+          <Box className="flex items-center">
             <SearchIcon />
             <Input type="text" className="rounded-2xl" placeholder="Хайх" />
-          </div>
-          <div className="flex gap-[40px]">
-            <div className="flex  gap-3 items-center">
+          </Box>
+          <Box className="flex gap-[40px]">
+            <Box className="flex  gap-3 items-center">
               <ShoppingBasketIcon />
               <p>Сагс</p>
-            </div>
-            <div className="flex gap-3 items-center">
+            </Box>
+            <Box onClick={handle} className="flex gap-3 items-center">
               <PersonIcon />
               <p>Профайл</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Stack>
   );
 };
+export {Navbar}
