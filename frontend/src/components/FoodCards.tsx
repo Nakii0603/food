@@ -41,6 +41,8 @@ export const Foodlist = () => {
   var dataString = JSON.stringify(data);
   localStorage.setItem("data", dataString);
   console.log(dataString);
+  console.log(data);
+  
 
   return (
     <Stack sx={{ display: "flex", justifyContent: "center" }}>
