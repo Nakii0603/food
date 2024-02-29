@@ -1,15 +1,10 @@
 import { Request, Response } from "express";
 import { v2 as cloudinary } from "cloudinary";
 import { foodModel } from "../Model/food";
+
 const timestamp = new Date().toISOString().replace(/:/g, "-");
 const randomString = Math.random().toString(36).substring(7);
 const public_id = `food_${timestamp}_${randomString}`;
-
-cloudinary.config({
-  cloud_name: "dzx9hezqv",
-  api_key: "382562715324778",
-  api_secret: "6R3r5B_Du-DxinRVGJ3Oy__Rw8I",
-});
 const createFood = async (req: Request, res: Response) => {
   try {
     const cloudinaryResponse = await cloudinary.uploader.upload(
