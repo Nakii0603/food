@@ -4,6 +4,10 @@ import { CldUploadWidget } from "next-cloudinary";
 import { Stack } from "@mui/material";
 import { v2 as cloudinary } from "cloudinary";
 
+const cloudinaryCloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+const CLOUDINARY_URL = `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload`;
+
 interface Input {
   name: string;
   categoryName: string;
